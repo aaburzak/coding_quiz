@@ -7,26 +7,26 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
   </head>
   <body>
-  <h1>Coding Quiz!</h1>
-  <button class="start_button">Start!</button>
-  <div>
-    <h2 class="question">Test Question</h2>
+
+  <div class ="container">
+    <div id="question_container" class= "hide">
+      <h1>Coding Quiz!</h1>
+      <div id="question"><h2>Questions go here?</h2></div>
+      <div id="answer_buttons" class="btn_grid">
+        <button>Answer 1</button>
+        <button>Answer 2</button>
+        <button>Answer 3</button>
+        <button>Answer 4</button>
+      </div>
+    </div>
+    <div class = "controls">
+      <button id="start_btn" class="start_btn btn">Start</button>
+      <button id="next_btn" class="next_btn btn hide">Next</button>
+
+    </div>
+
   </div>
-  <div>
-    <button id="answerA">A</button>
-    <button id="answerB">B</button>
-    <button id="answerC">C</button>
-    <button id="answerD">D</button>
-  </div>
-  <div>
-    <h3 class="timer">Timer Here</h3>
-  </div>
-  <div class="leader_board">
-    <ul>
-        <li>one</li>
-        <li>two</li>
-    </ul>
-  </div>
+
     <script src="assets/js/script.js"></script>
   </body>
 </html>

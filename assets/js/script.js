@@ -8,7 +8,7 @@
 
 
 //var for quiz questions.
-var quiz_questions =[
+var quizQuestions =[
   {
     question: "test question one, the answer is C",
     answers:["A","B","C","D"],
@@ -32,13 +32,15 @@ var quiz_questions =[
 ];
 
 //variables
+var qQuestionIndex = 0;
+var score = 0;
+
+//variables needed to start code
 var start = document.querySelector(".start_button");
+var 
 var questionDisplay = document.querySelector(".question");
-var answerA = document.querySelector("#answerA");
-var answerB = document.querySelector("#answerB");
-var answerC = document.querySelector("#answerC");
-var answerD = document.querySelector("#answerD");
-var score = 0
+
+
 var timervalue = 0
 
 
@@ -46,4 +48,17 @@ function.first_question();
   if(userAnswer = correctAnswer1){
     //var userAnswer =
   var correctAnswer1 = answerA
+}
+
+
+function startGame(){
+
+}
+
+function nextQuestion(){
+
+}
+
+function selectAnswer(){
+  
 }
