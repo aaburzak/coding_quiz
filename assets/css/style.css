@@ -37,14 +37,15 @@ body.wrong{
   box-shadow: 0 0 10px 2px;
   background: linear-gradient(0deg, rgba(19,41,61,1) 0%, rgba(237,245,249,1) 63%);
 }
-
+h1{
+  text-align: center;
+}
 .btn_grid{
   display:grid;
   grid-template-columns: repeat(2, auto);
   gap: 10px;
   margin: 20px 0;
 }
-
 
 
 button {
@@ -66,6 +67,30 @@ button {
 button:hover{
   border-color:black;
   border-width: 4px;
+}
+
+button.correct{
+  background: rgb(17, 204, 17);
+}
+
+button.wrong{
+  background: rgb(235, 41, 41);
+}
+
+.start_next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hide{
+  display: none;
+}
+
+.start_btn, .next_btn{
+  font-weight:bold;
+  padding: 10px 20px;
+  font-size: 2em;
 }
 
 
