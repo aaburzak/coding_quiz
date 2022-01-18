@@ -32,14 +32,17 @@
 
 
 
-//variables to select specific elements within the html
-var startButton = document.getElementById('start_btn')
-var nextButton = document.getElementById('next_btn')
-var questionContainer = document.getElementById('question_container')
-var questionElement = document.getElementById('question')
-var answerElement = document.getElementById('answer_button')
-//shuffles questions in a random order
-var randomQuestion, currentQuestionIndex
+//Declared Variables
+var startButton = document.getElementById('start_btn');
+var nextButton = document.getElementById('next_btn');
+var questionContainer = document.getElementById('question_container');
+var questionElement = document.getElementById('question');
+var answerElement = document.getElementById('answer_button');
+var timerElement = document.querySelector(".timer-count");
+var randomQuestion, currentQuestionIndex;
+var timer;
+var timerCount = 30;
+var penaltyTime = 5;
 
 
 //begins the game upon click of start button
@@ -56,14 +59,32 @@ function startGame(){
   randomQuestion = quizQuestions.sort(() => Math.random() -.5)
   currentQuestionIndex = 0
   questionContainer.classList.remove('hide')
+  startTimer()
   nextQuestion()
 
+}
+
+function timesUp() {
+  questionElement.textContent = "Time's Up!";
+}
+
+function startTimer() {
+  // Sets timer
+  timer = setInterval(function() {
+    timerCount--;
+    timerElement.textContent = timerCount;
+    // Tests if time has run out
+    if (timerCount === 0) {
+      // Clears interval
+      clearInterval(timer);
+      timesUp();
+    }
+  }, 1000);
 }
 
 function nextQuestion(){
   reset()
   showQuestion(randomQuestion[currentQuestionIndex])
-
 }
 
 function showQuestion(question){
@@ -91,16 +112,22 @@ function reset(){
 function selectAnswer(e){
   var userAnswer = e.target
   var correct = userAnswer.dataset.correct
+
   setStatusClass(document.body, correct)
   Array.from(answerElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
-  })
-  if(randomQuestion.length > currentQuestionIndex + 1){
-    nextButton.classList.remove('hide')
-  } else {
-    startButton.innerText = 'Restart'
-    startButton.classList.remove('hide')
+  });
+
+  if (userAnswer !== correct){
+    timerCount = timerCount - penaltyTime;
   }
+
+  // if(randomQuestion.length > currentQuestionIndex + 1){
+  //   nextButton.classList.remove('hide')
+  // } else {
+  //   startButton.innerText = 'Restart'
+  //   startButton.classList.remove('hide')
+  // }
   
 }
 
