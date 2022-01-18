@@ -54,14 +54,12 @@ nextButton.addEventListener('click', () => {
 })
 
 function startGame(){
-  console.log('Started')
   startButton.classList.add('hide')
   randomQuestion = quizQuestions.sort(() => Math.random() -.5)
   currentQuestionIndex = 0
   questionContainer.classList.remove('hide')
   startTimer()
   nextQuestion()
-
 }
 
 function timesUp() {
@@ -74,7 +72,7 @@ function startTimer() {
     timerCount--;
     timerElement.textContent = timerCount;
     // Tests if time has run out
-    if (timerCount === 0) {
+    if (timerCount <= 0) {
       // Clears interval
       clearInterval(timer);
       timesUp();
@@ -118,23 +116,36 @@ function selectAnswer(e){
     setStatusClass(button, button.dataset.correct)
   });
 
-  if (userAnswer !== correct){
+  if (!correct){
     timerCount = timerCount - penaltyTime;
+  } else if (correct && randomQuestion.length > currentQuestionIndex + 1){
+    currentQuestionIndex++
+    nextQuestion()
+  } else {
+    startButton.innerText = 'Restart'
+    startButton.classList.remove('hide')
   }
 
+  }
   // if(randomQuestion.length > currentQuestionIndex + 1){
-  //   nextButton.classList.remove('hide')
+  //   currentQuestionIndex++
+  //   nextQuestion()
   // } else {
   //   startButton.innerText = 'Restart'
   //   startButton.classList.remove('hide')
   // }
   
-}
+
+
+
+
+
 
 function setStatusClass(element, correct){
   clearStatusClass(element)
   if(correct){
     element.classList.add('correct')
+
   }else {
     element.classList.add('wrong')
   }

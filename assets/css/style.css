@@ -69,13 +69,13 @@ button:hover{
   border-width: 4px;
 }
 
-button.correct{
+/* button.correct{
   background: rgb(17, 204, 17);
 }
 
 button.wrong{
   background: rgb(235, 41, 41);
-}
+} */
 
 .start_next {
   display: flex;
