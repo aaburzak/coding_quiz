@@ -2,7 +2,7 @@
 //Declared Variables
 var startButton = document.getElementById('start_btn');
 var saveButton = document.getElementById('save_btn');
-var nextButton = document.getElementById('next_btn');
+var restartButton = document.getElementById('restart_btn');
 var questionContainer = document.getElementById('question_container');
 var questionElement = document.getElementById('question');
 var answerElement = document.getElementById('answer_button');
@@ -36,7 +36,8 @@ function startGame(){
 function timesUp() {
   timerElement.classList.add('hide');
   questionContainer.classList.add('hide');
-  saveButton.classList.remove('hide')
+  saveButton.classList.remove('hide');
+  restartButton.classList.remove('hide')
 }
 
 function startTimer() {
@@ -106,20 +107,6 @@ function selectAnswer(e){
     timesUp()
   }
 }
-// starts function to save game score
-saveButton.addEventListener('click', savePrompt)
-
-function savePrompt(){
-  let player = prompt("Enter initials to save your score!");
-  if (player != null) { 
-    highScore.push (" "+ player +" - " + userScore.textContent + "")
-    scoreboard.textContent = highScore
-
-  }
-
-}
-
-
 //changes status of elements depending on user answers
 function setStatusClass(element, correct){
   clearStatusClass(element)
@@ -135,6 +122,28 @@ function clearStatusClass(element){
   element.classList.remove('correct')
   element.classList.remove('wrong')
 }
+
+// starts function to save game score
+saveButton.addEventListener('click', savePrompt)
+
+function savePrompt(){
+  let player = prompt("Enter initials to save your score!");
+  if (player != null) { 
+    highScore.push (" "+ player +" - " + userScore.textContent + "")
+    scoreboard.textContent = highScore
+  }
+
+}
+
+restartButton.addEventListener('click', restart)
+
+function restart(){
+  timerCount = 30
+  score = []
+  timerElement.classList.remove('hide');
+  startGame()
+}
+
 
 
 var quizQuestions =[

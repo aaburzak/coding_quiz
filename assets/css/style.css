@@ -84,7 +84,7 @@ button:hover{
   display: none;
 }
 
-.start_btn, .save_btn{
+.start_btn, .save_btn, .restart_btn{
   font-weight:bold;
   padding: 10px 20px;
   font-size: 2em;
