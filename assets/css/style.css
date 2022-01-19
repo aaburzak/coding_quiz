@@ -90,6 +90,13 @@ button:hover{
   font-size: 2em;
 }
 
+.score_card{
+  color:black;
+  background: linear-gradient(0deg, rgb(66, 99, 129) 0%, rgba(237,245,249,1) 63%);
+  text-align: center;
+  border-radius: 120px;
+}
+
 
 
 

@@ -14,7 +14,7 @@ var timer;
 var timerCount = 30;
 var penaltyTime = 5;
 var score = [];
-
+var highScore = [];
 
 
 
@@ -34,9 +34,8 @@ function startGame(){
 
 //announces the end of the game when time runs out
 function timesUp() {
-  questionElement.textContent = "Time's Up!";
+  timerElement.classList.add('hide');
   questionContainer.classList.add('hide');
-  userScore.textContent = score;
   saveButton.classList.remove('hide')
 }
 
@@ -104,7 +103,7 @@ function selectAnswer(e){
   } else {
     score ++
     userScore.textContent = score + timerCount;
-    saveButton.classList.remove('hide')
+    timesUp()
   }
 }
 // starts function to save game score
@@ -113,14 +112,15 @@ saveButton.addEventListener('click', savePrompt)
 function savePrompt(){
   let player = prompt("Enter initials to save your score!");
   if (player != null) { 
-    scoreboard.textContent = " "+ player +" - " + userScore.textContent + ""
+    highScore.push (" "+ player +" - " + userScore.textContent + "")
+    scoreboard.textContent = highScore
 
   }
 
 }
 
 
-
+//changes status of elements depending on user answers
 function setStatusClass(element, correct){
   clearStatusClass(element)
   if(correct){
@@ -180,11 +180,3 @@ var quizQuestions =[
 
 ];
 
-
- // if(randomQuestion.length > currentQuestionIndex + 1){
-  //   currentQuestionIndex++
-  //   nextQuestion()
-  // } else {
-  //   startButton.innerText = 'Restart'
-  //   startButton.classList.remove('hide')
-  // }
