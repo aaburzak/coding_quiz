@@ -48,11 +48,8 @@ var penaltyTime = 5;
 //begins the game upon click of start button
 startButton.addEventListener('click', startGame)
 
-nextButton.addEventListener('click', () => {
-  currentQuestionIndex++
-  nextQuestion()
-})
 
+//starts countdown when game begins and prompts a random question in the quiz
 function startGame(){
   startButton.classList.add('hide')
   randomQuestion = quizQuestions.sort(() => Math.random() -.5)
@@ -62,6 +59,9 @@ function startGame(){
   nextQuestion()
 }
 
+//prompts the next question in the quiz
+
+//announces the end of the game when time runs out
 function timesUp() {
   questionElement.textContent = "Time's Up!";
 }
@@ -80,11 +80,13 @@ function startTimer() {
   }, 1000);
 }
 
+//prompts the next question in the quiz
 function nextQuestion(){
   reset()
   showQuestion(randomQuestion[currentQuestionIndex])
 }
 
+//creates and displays the questions and answers for the quiz
 function showQuestion(question){
   questionElement.innerText = question.question
   question.answers.forEach(answer =>{
@@ -98,15 +100,15 @@ function showQuestion(question){
   })
 }
 
+//removes the starter html quiz question and answers and replaces them with those stored in var quizQuestions
 function reset(){
   clearStatusClass(document.body)
-  nextButton.classList.add('hide')
   while(answerElement.firstChild){
     answerElement.removeChild
     (answerElement.firstChild)
   }
 }
-
+//determines if user's answer is correct
 function selectAnswer(e){
   var userAnswer = e.target
   var correct = userAnswer.dataset.correct
@@ -115,12 +117,14 @@ function selectAnswer(e){
   Array.from(answerElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
   });
-
+//penalizes the user by subtracting 5 seconds from time if incorrect.
   if (!correct){
     timerCount = timerCount - penaltyTime;
+//provides next question if correct and questions remain
   } else if (correct && randomQuestion.length > currentQuestionIndex + 1){
     currentQuestionIndex++
     nextQuestion()
+//starts over if at end of quiz
   } else {
     startButton.innerText = 'Restart'
     startButton.classList.remove('hide')
