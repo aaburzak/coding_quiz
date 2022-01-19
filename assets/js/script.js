@@ -1,48 +1,21 @@
-//Timer function
-//If timer starts - first question
-//if answer submitted - new question starts
-// if wrong function (subtract time, new question)
-// If timer zero or last question finished = game over
-//game over function (save initials and score)
-//displays yor score and past attempts (initials)
-
-
-//var for quiz questions.
-
-
-// //variables
-// var qQuestionIndex = 0;
-// var score = 0;
-
-// //variables needed to start code
-// var start = document.querySelector(".start_button");
-// var 
-// var questionDisplay = document.querySelector(".question");
-
-
-// var timervalue = 0
-
-
-// function.first_question();
-//   if(userAnswer = correctAnswer1){
-//     //var userAnswer =
-//   var correctAnswer1 = answerA
-// }
-
-
-
 
 //Declared Variables
 var startButton = document.getElementById('start_btn');
+var saveButton = document.getElementById('save_btn');
 var nextButton = document.getElementById('next_btn');
 var questionContainer = document.getElementById('question_container');
 var questionElement = document.getElementById('question');
 var answerElement = document.getElementById('answer_button');
 var timerElement = document.querySelector(".timer-count");
+var userScore = document.querySelector(".user_score");
+var scoreboard = document.querySelector(".scoreboard");
 var randomQuestion, currentQuestionIndex;
 var timer;
 var timerCount = 30;
 var penaltyTime = 5;
+var score = [];
+
+
 
 
 //begins the game upon click of start button
@@ -59,11 +32,12 @@ function startGame(){
   nextQuestion()
 }
 
-//prompts the next question in the quiz
-
 //announces the end of the game when time runs out
 function timesUp() {
   questionElement.textContent = "Time's Up!";
+  questionContainer.classList.add('hide');
+  userScore.textContent = score;
+  saveButton.classList.remove('hide')
 }
 
 function startTimer() {
@@ -100,7 +74,7 @@ function showQuestion(question){
   })
 }
 
-//removes the starter html quiz question and answers and replaces them with those stored in var quizQuestions
+//removes starter html
 function reset(){
   clearStatusClass(document.body)
   while(answerElement.firstChild){
@@ -120,28 +94,30 @@ function selectAnswer(e){
 //penalizes the user by subtracting 5 seconds from time if incorrect.
   if (!correct){
     timerCount = timerCount - penaltyTime;
-//provides next question if correct and questions remain
+//provides next question if correct and questions remain, adds a point to your score
   } else if (correct && randomQuestion.length > currentQuestionIndex + 1){
     currentQuestionIndex++
+    score ++
+    userScore.textContent = score;
     nextQuestion()
-//starts over if at end of quiz
+//adds a point to your score upon correct answer as well as remainder of time when quiz is finished. 
   } else {
-    startButton.innerText = 'Restart'
-    startButton.classList.remove('hide')
+    score ++
+    userScore.textContent = score + timerCount;
+    saveButton.classList.remove('hide')
+  }
+}
+// starts function to save game score
+saveButton.addEventListener('click', savePrompt)
+
+function savePrompt(){
+  let player = prompt("Enter initials to save your score!");
+  if (player != null) { 
+    scoreboard.textContent = " "+ player +" - " + userScore.textContent + ""
+
   }
 
-  }
-  // if(randomQuestion.length > currentQuestionIndex + 1){
-  //   currentQuestionIndex++
-  //   nextQuestion()
-  // } else {
-  //   startButton.innerText = 'Restart'
-  //   startButton.classList.remove('hide')
-  // }
-  
-
-
-
+}
 
 
 
@@ -203,3 +179,12 @@ var quizQuestions =[
   }
 
 ];
+
+
+ // if(randomQuestion.length > currentQuestionIndex + 1){
+  //   currentQuestionIndex++
+  //   nextQuestion()
+  // } else {
+  //   startButton.innerText = 'Restart'
+  //   startButton.classList.remove('hide')
+  // }

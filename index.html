@@ -7,13 +7,12 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
   </head>
   <body>
-
   <div class ="container">
     <h1>Coding Quiz!</h1>
     <div class= "card timer">
-      <div class = "timer-text">
-      <div class="large-font timer-count">60</div>
-      <h3>seconds remaining</h3>
+      <div id ="timer-text" class = "timer-text">
+        <h3>Time Left:</h3>
+      <div class="large-font timer-count">30</div>
     </div>
     <div id="question_container" class= "hide">
       <div id="question"><h2>Questions go here?</h2></div>
@@ -24,12 +23,19 @@
         <button class="btn">Answer D</button>
       </div>
     </div>
-    <div class = "start_next">
+    <div class = "start_save">
       <button id="start_btn" class="start_btn">Start</button>
-
+      <button id="save_btn" class="start_btn hide">Save Score</button>
     </div>
-
   </div>
+
+  <div class= "score_card">
+      <h3>Your Score:</h3>
+      <div class="large-font user_score">0</div>
+      <h3>High Scores:</h3>
+      <div class="large-font scoreboard">---</div>
+  </div>
+  
 
     <script src="assets/js/script.js"></script>
   </body>

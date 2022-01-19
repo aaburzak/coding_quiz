@@ -40,6 +40,11 @@ body.wrong{
 h1{
   text-align: center;
 }
+
+.timer-count{
+  margin-bottom: 20px;
+}
+
 .btn_grid{
   display:grid;
   grid-template-columns: repeat(2, auto);
@@ -69,17 +74,9 @@ button:hover{
   border-width: 4px;
 }
 
-/* button.correct{
-  background: rgb(17, 204, 17);
-}
-
-button.wrong{
-  background: rgb(235, 41, 41);
-} */
-
-.start_next {
+.start_save {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -87,7 +84,7 @@ button.wrong{
   display: none;
 }
 
-.start_btn, .next_btn{
+.start_btn, .save_btn{
   font-weight:bold;
   padding: 10px 20px;
   font-size: 2em;
@@ -96,35 +93,3 @@ button.wrong{
 
 
 
-@media screen and (max-width: 1183px) {
-  main {
-    flex-direction: column;
-  }
-
-  .word-guess,
-  .results {
-    width: 90vw;
-  }
-
-  section {
-    background-color: white;
-    margin: 20px auto;
-    width: 92vw;
-  }
-}
-
-@media screen and (max-width: 504px) {
-  .large-font {
-    font-size: 2em;
-  }
-
-  .reset-button {
-    font-size: 12px;
-    width: 20ox;
-    
-  }
-
-  .timer {
-    height: 200px;
-  }
- 
