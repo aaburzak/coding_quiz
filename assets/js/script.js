@@ -165,7 +165,7 @@ var quizQuestions =[
   {
     question: "What does HTML stand for?",
     answers:[
-      {text: "Hierarchy Talent Module Learner", correct: false},
+      {text: "Higher Talent Module Learner", correct: false},
       {text: "Hyper Text Markup Language", correct: true},
       {text: "Horizon Text Marker Length", correct: false},
       {text: "History Table Memory Leak", correct: false}
