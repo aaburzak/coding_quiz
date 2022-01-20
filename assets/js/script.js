@@ -32,13 +32,6 @@ function startGame(){
   nextQuestion()
 }
 
-//announces the end of the game when time runs out
-function timesUp() {
-  timerElement.classList.add('hide');
-  questionContainer.classList.add('hide');
-  saveButton.classList.remove('hide');
-  restartButton.classList.remove('hide')
-}
 
 function startTimer() {
   // Sets timer
@@ -123,6 +116,14 @@ function clearStatusClass(element){
   element.classList.remove('wrong')
 }
 
+//announces the end of the game when time runs out
+function timesUp() {
+  timerElement.classList.add('hide');
+  questionContainer.classList.add('hide');
+  saveButton.classList.remove('hide');
+  restartButton.classList.remove('hide')
+}
+
 // starts function to save game score
 saveButton.addEventListener('click', savePrompt)
 
@@ -135,55 +136,59 @@ function savePrompt(){
 
 }
 
+//restarts the quiz
 restartButton.addEventListener('click', restart)
 
 function restart(){
   timerCount = 30
   score = []
   timerElement.classList.remove('hide');
+  saveButton.classList.add('hide');
+  restartButton.classList.add('hide');
+  clearInterval(timer);
   startGame()
 }
 
 
-
+//questions used in the quiz
 var quizQuestions =[
   {
-    question: "test question one, the answer is C",
+    question: "What does CSS stand for?",
     answers:[
-      {text: "A", correct: false},
-      {text: "B", correct: false},
-      {text: "C", correct: true},
-      {text: "D", correct: false}
+      {text: "Cinematic Style Support", correct: false},
+      {text: "Corrupted System Selector", correct: false},
+      {text: "Cascading Style Sheets", correct: true},
+      {text: "Computer System Sanction", correct: false}
     ]
   },
 
   {
-    question: "test question two, the answer is B",
+    question: "What does HTML stand for?",
     answers:[
-      {text: "A", correct: false},
-      {text: "B", correct: true},
-      {text: "C", correct: false},
-      {text: "D", correct: false}
+      {text: "Hierarchy Talent Module Learner", correct: false},
+      {text: "Hyper Text Markup Language", correct: true},
+      {text: "Horizon Text Marker Length", correct: false},
+      {text: "History Table Memory Leak", correct: false}
     ]
   },
 
   {
-    question: "test question three, the answer is D",
+    question: "What does JS stand for?",
     answers:[
-      {text: "A", correct: false},
-      {text: "B", correct: false},
-      {text: "C", correct: false},
-      {text: "D", correct: true}
+      {text: "JuiceStaple", correct: false},
+      {text: "JunkStop", correct: false},
+      {text: "JerrySeinfeld", correct: false},
+      {text: "JavaScript", correct: true}
     ]
   },
 
   {
-    question: "test question four, the answer is A",
+    question: "What does RGB coloring stand for?",
     answers:[
-      {text: "A", correct: true},
-      {text: "B", correct: false},
-      {text: "C", correct: false},
-      {text: "D", correct: false}
+      {text: "red green blue", correct: true},
+      {text: "Ruth Ginsberg Baby", correct: false},
+      {text: "royal glowing black", correct: false},
+      {text: "rich gray background", correct: false}
     ]
   }
 
